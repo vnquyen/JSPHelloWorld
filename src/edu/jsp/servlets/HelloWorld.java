@@ -3,8 +3,9 @@ package edu.jsp.servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -42,13 +43,18 @@ public class HelloWorld extends HttpServlet {
 	
 	private void loadParameters(HttpServletRequest request, 
             HttpServletResponse response, String method) throws ServletException, IOException {
-	    String username = request.getParameter("username");
-	    String password = request.getParameter("password");
+	    ServletContext context = this.getServletContext();
+	    String red = context.getInitParameter("red");
+	    String green = context.getInitParameter("green");
+	    String song_1 = context.getInitParameter("song");
+	    
+	    ServletConfig config = this.getServletConfig();
+	    String song = config.getInitParameter("song");
 	    
 	    PrintWriter writer = response.getWriter();
 	    writer.println("Hello World by " + method + ".<br/>");
-	    writer.println("Username: " + username + " - Password: " + password);
-	    
+	    writer.println("The song is " + song + ".<br/>");
+	    writer.println("Red chosen " + red + " and Green chosen " + green + " and their song are " + song_1 + ".");
 	}
 
 }
