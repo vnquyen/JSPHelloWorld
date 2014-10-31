@@ -7,10 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="auth" method="post">
-		Username: <input type="text" name="username" placeholder="Username" />
-		Password: <input type="password" name="password" placeholder="Password" />
-		<input type="submit" value="OK" />
-	</form>
+	<img alt="Welcome to my world" src="img/tghm1.jpg" width="60%">
 </body>
 </html>
