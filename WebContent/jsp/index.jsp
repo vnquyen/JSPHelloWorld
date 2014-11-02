@@ -4,13 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Login</title>
+<title>Index</title>
 </head>
 <body>
-	<form action="auth" method="post">
-		Username: <input type="text" name="username" placeholder="Username" />
-		Password: <input type="password" name="password" placeholder="Password" />
-		<input type="submit" value="OK" />
-	</form>
+	<a href="imgshow">Perfect World</a>
+	<a href="pikachu">Pikachu</a>
 </body>
 </html>

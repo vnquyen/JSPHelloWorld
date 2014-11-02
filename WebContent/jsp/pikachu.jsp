@@ -4,13 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Login</title>
+<title>Pikachu</title>
 </head>
 <body>
-	<form action="auth" method="post">
-		Username: <input type="text" name="username" placeholder="Username" />
-		Password: <input type="password" name="password" placeholder="Password" />
-		<input type="submit" value="OK" />
-	</form>
+	<img alt="Pikachu" src="img/pikachu-celebrate-film.jpg" />
 </body>
 </html>

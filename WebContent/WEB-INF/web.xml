@@ -1,32 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <listener>
+  	<listener-class>edu.jsp.listeners.WebsiteSession</listener-class>
+  </listener>
+  <session-config>
+    <session-timeout>10</session-timeout>
+  </session-config>
   <context-param>
-  	<param-name>red</param-name>
-  	<param-value>Bulbasaur</param-value>
+    <param-name>red</param-name>
+    <param-value>Bulbasaur</param-value>
   </context-param>
   <context-param>
-  	<param-name>green</param-name>
-  	<param-value>Charmander</param-value>
+    <param-name>green</param-name>
+    <param-value>Charmander</param-value>
   </context-param>
   <context-param>
-  	<param-name>song</param-name>
-  	<param-value>Our childhood</param-value>
+    <param-name>song</param-name>
+    <param-value>Our childhood</param-value>
   </context-param>
   
-  <!-- Starting of Servlets -->
   <servlet>
     <servlet-name>Hello World</servlet-name>
     <servlet-class>edu.jsp.servlets.HelloWorld</servlet-class>
     <init-param>
-    	<param-name>song</param-name>
-    	<param-value>A thousand years</param-value>
+      <param-name>song</param-name>
+      <param-value>A thousand years</param-value>
     </init-param>
   </servlet>
   <servlet-mapping>
     <servlet-name>Hello World</servlet-name>
     <url-pattern>/hello</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>Authentication</servlet-name>
     <servlet-class>edu.jsp.servlets.Authentication</servlet-class>
@@ -35,9 +39,22 @@
     <servlet-name>Authentication</servlet-name>
     <url-pattern>/auth</url-pattern>
   </servlet-mapping>
-  <!-- Ending of Servlets -->
-  
-  <!-- Starting of JSP -->
+  <servlet>
+    <servlet-name>Image Show</servlet-name>
+    <servlet-class>edu.jsp.servlets.ImageShow</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Image Show</servlet-name>
+    <url-pattern>/imgshow</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Logout</servlet-name>
+    <servlet-class>edu.jsp.servlets.Logout</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Logout</servlet-name>
+    <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
   <servlet>
     <servlet-name>Login</servlet-name>
     <jsp-file>/jsp/login.jsp</jsp-file>
@@ -55,12 +72,31 @@
     <url-pattern>/menu</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>Index</servlet-name>
+    <jsp-file>/jsp/index.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Index</servlet-name>
+    <url-pattern>/index</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Pikachu</servlet-name>
+    <jsp-file>/jsp/pikachu.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Pikachu</servlet-name>
+    <url-pattern>/pikachu</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>Sample</servlet-name>
     <jsp-file>/jsp/sample.jsp</jsp-file>
+    <init-param>
+    	<param-name>Trainer</param-name>
+    	<param-value>Red</param-value>
+    </init-param>
   </servlet>
   <servlet-mapping>
     <servlet-name>Sample</servlet-name>
     <url-pattern>/sample</url-pattern>
   </servlet-mapping>
-  <!-- Ending of JSP -->
 </web-app>

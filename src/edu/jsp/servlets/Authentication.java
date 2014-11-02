@@ -5,12 +5,14 @@ import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import edu.jsp.models.DBManagement;
+import edu.jsp.models.Image;
 
 /**
  * Servlet implementation class Authentication
@@ -32,16 +34,30 @@ public class Authentication extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, 
 	        HttpServletResponse response) throws ServletException, IOException {
-		String username = request.getParameter("username");
+	    String username = request.getParameter("username");
 	    String password = request.getParameter("password");
 	    PrintWriter writer = response.getWriter();
 	    DBManagement db = new DBManagement();
 	    
 	    if(db.checkUser(username, password)) {
-	    	RequestDispatcher dispatcher = request.getRequestDispatcher("jsp/menu.jsp");
+	        HttpSession session = request.getSession();
+	        //session.setMaxInactiveInterval(600);
+	        
+	        Cookie cookie = new Cookie("username", username);
+	        response.addCookie(cookie);
+	        
+	        Image img = new Image("tghm1.jpg", 1366, 768, "img/tghm1.jpg");
+	        
+	    	RequestDispatcher dispatcher = request.getRequestDispatcher("/imgshow");
+	    	session.setAttribute("username", username);
+	    	request.setAttribute("ImageShow", img);
+	    	
+	    	session.setAttribute("image", img);
+	    	session.removeAttribute("image");
+	    	
 	    	dispatcher.forward(request, response);
 	    } else {
-	    	response.sendRedirect("jsp/login.jsp");
+	    	response.sendRedirect("login");
 	    }  
 	}
 

@@ -5,14 +5,22 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Sample</title>
 </head>
 <body>
 	<% 
 		out.println("Hello World <br/>");
 		int i = 8;
-		ArrayList list;
+		out.println("Trainer: " + config.getInitParameter("Trainer") + " <br/>");
 	%>
-	Value of i: <%= i %>
+	Value of i: <%= i %><br/>
+	<%= application.getInitParameter("red") %><br/>
+	Username: <%= session.getAttribute("username") %><br/>
+	
+	<% pageContext.setAttribute("scope", "Page Context"); %>
+	Page Context - Get Attribute: <%= pageContext.getAttribute("scope") %><br/>
+	Page Context - Expression Language: ${pageScope.scope }<br/>
+	
+	Example EL: ${4+3}
 </body>
 </html>
