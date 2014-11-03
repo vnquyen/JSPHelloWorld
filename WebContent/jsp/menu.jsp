@@ -25,6 +25,19 @@
 	Page Context - Get Application Scope: <%= pageContext.getAttribute("otherScope", pageContext.APPLICATION_SCOPE) %><br/>
 	Page Context - Get Application Scope Expression Language: ${applicationScope.otherScope}<br/>
 	
+	Student's name is ${requestScope.student.name}<br/>
+	Get initParam of Application by EL: Red chosen ${initParam.red}, Green chosen ${initParam.green}<br/>
+	Languages: ${requestScope.languages}
+	<ul>
+		<li>${requestScope.languages[0]}</li>
+	</ul>
+
+	<jsp:useBean id="student" type="edu.jsp.models.Person" class="edu.jsp.models.Student" scope="request">
+		<jsp:setProperty property="name" name="student" value="Green" />
+	</jsp:useBean>
+	<%-- <jsp:setProperty property="name" name="student" value="Green" /> --%>
+	Get Property: <jsp:getProperty property="name" name="student"/>
+	
 	<p><a href="logout">Logout</a></p>
 </body>
 </html>

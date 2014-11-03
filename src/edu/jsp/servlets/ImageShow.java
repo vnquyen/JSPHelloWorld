@@ -2,19 +2,18 @@ package edu.jsp.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.catalina.manager.util.SessionUtils;
-
-import edu.jsp.models.DBManagement;
+import edu.jsp.models.Student;
 
 /**
  * Servlet implementation class ImageShow
@@ -57,6 +56,17 @@ public class ImageShow extends HttpServlet {
 	            System.out.println(c.getName());
 	            System.out.println(c.getValue());
 	        }
+	        
+	        Student student = new Student();
+	        student.setName("Red");
+	        request.setAttribute("student", student);
+	        
+	        List<String> languages = new ArrayList<String>();
+	        languages.add("Java");
+	        languages.add("C#");
+	        languages.add("C++");
+	        languages.add("PHP");
+	        request.setAttribute("languages", languages);
 	        
 	        request.setAttribute("otherScope", "Request Scope");
 	        session.setAttribute("otherScope", "Session Scope");
